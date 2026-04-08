@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matt Farrell | Private Brand Preview</title>
+    <meta
+      name="description"
+      content="Private brand preview for Matt Farrell built as a static HTML site."
+    />
+    <meta name="theme-color" content="#2c2c2a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --command-dark: #2c2c2a;
+        --navigator-blue: #185fa5;
+        --navigator-blue-deep: #0c447c;
+        --navigator-blue-soft: #e6f1fb;
+        --destination-amber: #ef9f27;
+        --destination-amber-soft: #faeeda;
+        --terrain: #f1efe8;
+        --terrain-bright: #f8f6f0;
+        --text-muted: #444441;
+        --line-soft: rgba(44, 44, 42, 0.08);
+        --line-white: rgba(255, 255, 255, 0.1);
+        --shadow-soft: 0 24px 60px rgba(44, 44, 42, 0.08);
+        --shadow-heavy: 0 32px 120px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        font-family: "DM Sans", system-ui, sans-serif;
+        color: var(--command-dark);
+        background:
+          radial-gradient(circle at top left, rgba(24, 95, 165, 0.08), transparent 24%),
+          linear-gradient(180deg, #e9ece8 0%, var(--terrain) 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.08;
+        background-image:
+          linear-gradient(rgba(44, 44, 42, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(44, 44, 42, 0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(circle at center, black 50%, transparent 95%);
+        z-index: 1;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 2;
+      }
+
+      .content {
+        transition:
+          filter 260ms ease,
+          transform 260ms ease,
+          opacity 260ms ease;
+      }
+
+      body.locked {
+        overflow: hidden;
+      }
+
+      body.locked .content {
+        filter: blur(18px);
+        transform: scale(1.02);
+        opacity: 0.72;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: var(--command-dark);
+        color: #fff;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top left, rgba(24, 95, 165, 0.28), transparent 28%),
+          radial-gradient(circle at 80% 20%, rgba(239, 159, 39, 0.12), transparent 18%),
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: auto, auto, 42px 42px, 42px 42px;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 8rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        gap: 3.5rem;
+        min-height: 100vh;
+        padding: 4.5rem 0;
+        align-items: end;
+      }
+
+      .eyebrow,
+      .micro-label,
+      .metric,
+      .pill,
+      .arc-node,
+      .gate-caption,
+      .error-message {
+        font-family: "DM Mono", ui-monospace, monospace;
+      }
+
+      .eyebrow {
+        margin: 0 0 1.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .accent-line {
+        width: 5rem;
+        height: 1px;
+        margin-bottom: 2rem;
+        background: var(--destination-amber);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Playfair Display", Georgia, serif;
+      }
+
+      .hero-title {
+        font-size: clamp(3.25rem, 8vw, 5.6rem);
+        font-weight: 900;
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-title em {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--destination-amber);
+        font-style: italic;
+        font-weight: 600;
+      }
+
+      .hero-copy {
+        max-width: 42rem;
+        margin: 2rem 0 0;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        line-height: 1.95;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 0.8rem 1rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .pill.soft {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .pill.blue {
+        border: 1px solid rgba(24, 95, 165, 0.5);
+        background: rgba(24, 95, 165, 0.14);
+        color: #d7eaff;
+      }
+
+      .hero-card-wrap {
+        position: relative;
+      }
+
+      .hero-glow-left,
+      .hero-glow-right {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(54px);
+      }
+
+      .hero-glow-left {
+        top: 2rem;
+        left: -2rem;
+        width: 7rem;
+        height: 7rem;
+        background: rgba(239, 159, 39, 0.15);
+      }
+
+      .hero-glow-right {
+        top: 0;
+        right: 0;
+        width: 10rem;
+        height: 10rem;
+        background: rgba(24, 95, 165, 0.2);
+      }
+
+      .hero-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .hero-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .micro-label {
+        margin: 0;
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .card-headline {
+        max-width: 14rem;
+        margin-top: 0.75rem;
+        font-size: 2rem;
+        line-height: 1.05;
+        color: #fff;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .metric {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1rem;
+        padding: 0.95rem 1rem;
+        background: rgba(0, 0, 0, 0.1);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .core {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .core::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 10rem;
+        background: linear-gradient(to bottom, rgba(219, 232, 246, 0.4), transparent);
+      }
+
+      .core-inner {
+        position: relative;
+        padding: 5rem 0 6rem;
+      }
+
+      .section-label {
+        margin: 0;
+        font-size: 0.7rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--navigator-blue);
+      }
+
+      .section-title {
+        max-width: 48rem;
+        margin-top: 1.25rem;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+      }
+
+      .section-copy {
+        max-width: 42rem;
+        margin-top: 1.5rem;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        line-height: 1.95;
+        color: var(--text-muted);
+      }
+
+      .proof-grid {
+        display: grid;
+        gap: 1.25rem;
+        margin-top: 3.5rem;
+      }
+
+      .proof-card,
+      .story-card,
+      .rules-card {
+        border-radius: 1.75rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .proof-card {
+        border: 1px solid var(--line-soft);
+        padding: 1.75rem;
+      }
+
+      .proof-card.blue {
+        background: var(--navigator-blue-soft);
+        border-color: #b5d4f4;
+      }
+
+      .proof-card.amber {
+        background: var(--destination-amber-soft);
+        border-color: #fac775;
+      }
+
+      .proof-card.neutral {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .proof-label {
+        margin: 0;
+        font-size: 0.65rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .proof-title {
+        margin-top: 1rem;
+        font-size: 1.8rem;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .proof-body {
+        margin: 1rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.9;
+        color: var(--text-muted);
+      }
+
+      .lower-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 3.5rem;
+      }
+
+      .story-card {
+        border: 1px solid var(--line-soft);
+        padding: 1.75rem;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .arc-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+
+      .arc-node {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .arc-node.light {
+        border: 1px solid #b5d4f4;
+        background: var(--navigator-blue-soft);
+        color: var(--navigator-blue-deep);
+      }
+
+      .arc-node.dark {
+        background: var(--command-dark);
+        color: #fff;
+      }
+
+      .arc-arrow {
+        color: #888780;
+      }
+
+      .quote-block {
+        margin: 2rem 0 0;
+        padding: 1.35rem 1.25rem;
+        border-left: 3px solid var(--navigator-blue);
+        background: #f7f8f6;
+        font-size: 1rem;
+        line-height: 1.95;
+      }
+
+      .rules-card {
+        padding: 1.75rem;
+        background: var(--command-dark);
+        color: #fff;
+      }
+
+      .rules-list {
+        margin: 1.25rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rules-list li {
+        margin: 0;
+        padding: 0.65rem 0;
+        line-height: 1.85;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .footer {
+        border-top: 1px solid var(--line-soft);
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3.5rem 0 4rem;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 18rem;
+        border: 0;
+        border-radius: 999px;
+        padding: 1rem 1.5rem;
+        background: var(--navigator-blue);
+        color: #fff;
+        font: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 16px 40px rgba(24, 95, 165, 0.28);
+        transition: background-color 180ms ease, transform 180ms ease;
+      }
+
+      .cta-button:hover {
+        background: var(--navigator-blue-deep);
+        transform: translateY(-1px);
+      }
+
+      .gate {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: rgba(14, 15, 17, 0.28);
+        backdrop-filter: blur(8px);
+      }
+
+      body.unlocked .gate {
+        display: none;
+      }
+
+      .gate-panel {
+        width: min(100%, 28rem);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 1.75rem;
+        padding: 1.5rem;
+        background:
+          linear-gradient(180deg, rgba(44, 44, 42, 0.94), rgba(44, 44, 42, 0.9)),
+          rgba(44, 44, 42, 0.92);
+        color: #fff;
+        box-shadow: var(--shadow-heavy);
+      }
+
+      .gate-caption {
+        margin: 0 0 1rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.46);
+      }
+
+      .gate-title {
+        font-size: 2.2rem;
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+
+      .gate-copy {
+        margin: 1rem 0 0;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .gate-form {
+        margin-top: 1.5rem;
+      }
+
+      .gate-input {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 1rem;
+        padding: 1rem 1rem 1rem 1.05rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        font: inherit;
+      }
+
+      .gate-input::placeholder {
+        color: rgba(255, 255, 255, 0.38);
+      }
+
+      .gate-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .gate-button {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        padding: 0.9rem 1.2rem;
+        background: var(--destination-amber);
+        color: #2a1a03;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .gate-button:hover {
+        filter: brightness(1.03);
+      }
+
+      .error-message {
+        min-height: 1.25rem;
+        margin-top: 0.75rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #ffcf9b;
+      }
+
+      @media (min-width: 920px) {
+        .hero-grid {
+          grid-template-columns: minmax(0, 1.15fr) 420px;
+        }
+
+        .proof-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .lower-grid {
+          grid-template-columns: minmax(0, 1.2fr) 360px;
+        }
+
+        .footer-inner {
+          flex-direction: row;
+          align-items: end;
+          justify-content: space-between;
+        }
+
+        .cta-button {
+          width: auto;
+        }
+      }
+
+      @media (max-width: 639px) {
+        .container {
+          width: min(1120px, calc(100% - 32px));
+        }
+
+        .hero-grid,
+        .core-inner {
+          padding-top: 4rem;
+          padding-bottom: 4.5rem;
+        }
+
+        .hero-card-top {
+          flex-direction: column;
+        }
+
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gate-panel {
+          padding: 1.25rem;
+        }
+
+        .gate-title {
+          font-size: 1.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="locked">
+    <div class="page-shell">
+      <div class="gate" id="gate">
+        <div class="gate-panel">
+          <p class="gate-caption">Private Preview</p>
+          <h2 class="gate-title">Built for pressure.</h2>
+          <p class="gate-copy">
+            This preview opens behind a password gate. The page remains intentionally
+            blurred until the correct passphrase is entered.
+          </p>
+          <form class="gate-form" id="password-form">
+            <label for="password-input" class="gate-caption">Enter Password</label>
+            <input
+              id="password-input"
+              class="gate-input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              autocomplete="current-password"
+            />
+            <div class="gate-actions">
+              <button class="gate-button" type="submit">Unlock Preview</button>
+            </div>
+            <div class="error-message" id="error-message" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+
+      <main class="content">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <p class="eyebrow">Matt Farrell</p>
+              <div class="accent-line"></div>
+              <h1 class="hero-title">
+                Built for pressure.
+                <em>Driven to win.</em>
+              </h1>
+              <p class="hero-copy">
+                A one-page expression of a brand that feels less like self-promotion
+                and more like a field-tested operating system: direct, strategic, and
+                already looking three moves ahead.
+              </p>
+              <div class="pill-row">
+                <span class="pill soft">CEO / Defense-Tech / National Security</span>
+                <span class="pill blue">The market's contested. The path isn't obvious.</span>
+              </div>
+            </div>
+
+            <aside class="hero-card-wrap" aria-label="Brand proof panel">
+              <div class="hero-glow-left"></div>
+              <div class="hero-glow-right"></div>
+              <div class="hero-card">
+                <div class="hero-card-top">
+                  <div>
+                    <p class="micro-label">Navigator's Key</p>
+                    <h2 class="card-headline">Earned authority with a destination in view.</h2>
+                  </div>
+                  <svg
+                    viewBox="0 0 160 160"
+                    aria-hidden="true"
+                    width="144"
+                    height="144"
+                    fill="none"
+                  >
+                    <circle cx="80" cy="80" r="26" fill="#185FA5" opacity="0.15"></circle>
+                    <circle cx="80" cy="80" r="17" fill="#185FA5"></circle>
+                    <g stroke="rgba(255,255,255,0.15)" stroke-width="1">
+                      <line x1="80" y1="39" x2="80" y2="47"></line>
+                      <line x1="80" y1="113" x2="80" y2="121"></line>
+                      <line x1="39" y1="80" x2="47" y2="80"></line>
+                      <line x1="113" y1="80" x2="121" y2="80"></line>
+                    </g>
+                    <line
+                      x1="80"
+                      y1="98"
+                      x2="80"
+                      y2="116"
+                      stroke="rgba(255,255,255,0.35)"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                    ></line>
+                    <line
+                      x1="62"
+                      y1="80"
+                      x2="44"
+                      y2="80"
+                      stroke="rgba(255,255,255,0.35)"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                    ></line>
+                    <line
+                      x1="80"
+                      y1="62"
+                      x2="80"
+                      y2="20"
+                      stroke="#185FA5"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    ></line>
+                    <polygon points="80,12 74,24 86,24" fill="#185FA5"></polygon>
+                    <circle cx="80" cy="10" r="6" fill="#EF9F27"></circle>
+                    <line
+                      x1="80"
+                      y1="80"
+                      x2="144"
+                      y2="80"
+                      stroke="rgba(255,255,255,0.72)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    ></line>
+                    <line
+                      x1="132"
+                      y1="80"
+                      x2="132"
+                      y2="94"
+                      stroke="rgba(255,255,255,0.72)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    ></line>
+                    <line
+                      x1="144"
+                      y1="80"
+                      x2="144"
+                      y2="94"
+                      stroke="rgba(255,255,255,0.72)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    ></line>
+                  </svg>
+                </div>
+
+                <div class="metric-grid">
+                  <div class="metric">Strategic #1</div>
+                  <div class="metric">Urgency #1 of 12</div>
+                  <div class="metric">Type 8 Challenger</div>
+                  <div class="metric">High-dominance self-starter</div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="core">
+          <div class="container core-inner">
+            <p class="section-label">Core Essence</p>
+            <h2 class="section-title">The vibe is executive clarity, not borrowed bravado.</h2>
+            <p class="section-copy">
+              The identity book keeps insisting on the same idea: the setting can
+              change completely, but the internal architecture stays intact. That
+              makes the page feel disciplined, sparse, and load-bearing.
+            </p>
+
+            <div class="proof-grid">
+              <article class="proof-card blue">
+                <p class="proof-label">Archetype</p>
+                <h3 class="proof-title">Ruler, sharpened by a navigator's lens</h3>
+                <p class="proof-body">
+                  Authority here feels earned, not performed. The posture is calm,
+                  direct, and already oriented toward the destination.
+                </p>
+              </article>
+
+              <article class="proof-card neutral">
+                <p class="proof-label">Operating System</p>
+                <h3 class="proof-title">The arena changes. The engine does not.</h3>
+                <p class="proof-body">
+                  Competitor to coach to entrepreneur to CEO reads less like a resume
+                  and more like a repeated stress test with the same outcome.
+                </p>
+              </article>
+
+              <article class="proof-card amber">
+                <p class="proof-label">Proof Layer</p>
+                <h3 class="proof-title">Instruments over adjectives</h3>
+                <p class="proof-body">
+                  The identity book keeps returning to scores, rank, and evidence.
+                  That makes the visual language precise, not promotional.
+                </p>
+              </article>
+            </div>
+
+            <div class="lower-grid">
+              <article class="story-card">
+                <p class="section-label">Story Arc</p>
+                <div class="arc-row">
+                  <span class="arc-node light">Competitor</span>
+                  <span class="arc-arrow">→</span>
+                  <span class="arc-node light">Coach</span>
+                  <span class="arc-arrow">→</span>
+                  <span class="arc-node light">Entrepreneur</span>
+                  <span class="arc-arrow">→</span>
+                  <span class="arc-node dark">CEO</span>
+                </div>
+                <blockquote class="quote-block">
+                  The story isn't a resume. It's a proof of concept. Every arena
+                  changes; the operating system never does.
+                </blockquote>
+              </article>
+
+              <aside class="rules-card">
+                <p class="micro-label">Visual Rules</p>
+                <ul class="rules-list">
+                  <li>Command Dark carries the page so the tone feels grounded and exact.</li>
+                  <li>Navigator Blue acts like structure, not decoration.</li>
+                  <li>Destination Amber appears rarely so it lands like a signal flare.</li>
+                  <li>Serif headlines bring gravitas while mono labels read like evidence.</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="container footer-inner">
+            <div>
+              <p class="section-label">Minimal Footer / CTA</p>
+              <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 3.25rem);">
+                If the terrain is contested, make the signal unmistakable.
+              </h2>
+            </div>
+            <a
+              class="cta-button"
+              href="https://www.linkedin.com/in/mfarrelldayton/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open the conversation
+            </a>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const PASSWORD = "fDDY:?WX#T}sZeJA{nKlyqd{t.D>29HGl#Kq92\\AQ>JW";
+        const STORAGE_KEY = "fmg-preview-unlocked";
+        const body = document.body;
+        const form = document.getElementById("password-form");
+        const input = document.getElementById("password-input");
+        const errorMessage = document.getElementById("error-message");
+
+        function unlock() {
+          body.classList.remove("locked");
+          body.classList.add("unlocked");
+          sessionStorage.setItem(STORAGE_KEY, "true");
+          errorMessage.textContent = "";
+        }
+
+        function lock() {
+          body.classList.add("locked");
+          body.classList.remove("unlocked");
+        }
+
+        if (sessionStorage.getItem(STORAGE_KEY) === "true") {
+          unlock();
+        } else {
+          lock();
+          input.focus();
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          if (input.value === PASSWORD) {
+            unlock();
+            form.reset();
+            return;
+          }
+
+          errorMessage.textContent = "Incorrect password";
+          input.select();
+        });
+      })();
+    </script>
+  </body>
+</html>
