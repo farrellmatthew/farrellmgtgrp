@@ -893,12 +893,52 @@
 
     <script>
       (function () {
-        const PASSWORD = "fDDY:?WX#T}sZeJA{nKlyqd{t.D>29HGl#Kq92\\AQ>JW";
         const STORAGE_KEY = "fmg-preview-unlocked";
+        const PASSWORD_SALT = "097eb52ec28a5a3accdfcde92a7c5d9b";
+        const PASSWORD_ITERATIONS = 210000;
+        const PASSWORD_HASH =
+          "3a059cc9786a5823de78cb9d55778e5d9c1940b752c821180b9271a52fd7dce6";
         const body = document.body;
         const form = document.getElementById("password-form");
         const input = document.getElementById("password-input");
         const errorMessage = document.getElementById("error-message");
+
+        function hexToBytes(hex) {
+          return new Uint8Array(hex.match(/.{1,2}/g).map(function (byte) {
+            return parseInt(byte, 16);
+          }));
+        }
+
+        function bytesToHex(bytes) {
+          return Array.from(bytes)
+            .map(function (byte) {
+              return byte.toString(16).padStart(2, "0");
+            })
+            .join("");
+        }
+
+        async function derivePasswordHash(password) {
+          const encoder = new TextEncoder();
+          const baseKey = await crypto.subtle.importKey(
+            "raw",
+            encoder.encode(password),
+            "PBKDF2",
+            false,
+            ["deriveBits"],
+          );
+          const derivedBits = await crypto.subtle.deriveBits(
+            {
+              name: "PBKDF2",
+              salt: hexToBytes(PASSWORD_SALT),
+              iterations: PASSWORD_ITERATIONS,
+              hash: "SHA-256",
+            },
+            baseKey,
+            256,
+          );
+
+          return bytesToHex(new Uint8Array(derivedBits));
+        }
 
         function unlock() {
           body.classList.remove("locked");
@@ -919,12 +959,21 @@
           input.focus();
         }
 
-        form.addEventListener("submit", function (event) {
+        form.addEventListener("submit", async function (event) {
           event.preventDefault();
 
-          if (input.value === PASSWORD) {
-            unlock();
-            form.reset();
+          const enteredPassword = input.value;
+
+          try {
+            const derivedHash = await derivePasswordHash(enteredPassword);
+
+            if (derivedHash === PASSWORD_HASH) {
+              unlock();
+              form.reset();
+              return;
+            }
+          } catch (error) {
+            errorMessage.textContent = "Password check unavailable";
             return;
           }
 
