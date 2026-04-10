@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExistX Brand Guidelines — LLM Reference System</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #185FA5;
+  --blue-mid:   #2172BE;
+  --blue-deep:  #0C447C;
+  --blue-light: #E6F1FB;
+  --blue-b:     #B5D4F4;
+  --navy:       #08152A;
+  --obsidian:   #0B1E38;
+  --slate:      #1E2D42;
+  --storm:      #2A3F5A;
+  --signal:     #00C2FF;
+  --sky:        #4FA3D8;
+  --vrf:        #1DB584;
+  --vrf-d:      #0E8A63;
+  --vrf-l:      #E8F5EE;
+  --surface:    #F4F6F9;
+  --border:     #E2E8F0;
+  --border-m:   #CBD5E1;
+  --text1:      #08152A;
+  --text2:      #4A5568;
+  --muted:      #94A3B8;
+  --mono: 'IBM Plex Mono', 'Liberation Mono', monospace;
+  --sans: 'IBM Plex Sans', 'Liberation Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text1);
+  background: var(--surface);
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  background: var(--navy);
+  border-bottom: 2px solid var(--blue);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  height: 48px;
+  gap: 0;
+}
+
+.nav-brand {
+  font-family: var(--mono);
+  font-size: 13pt;
+  font-weight: 500;
+  color: #fff;
+  margin-right: 32px;
+  white-space: nowrap;
+}
+
+.nav-brand span {
+  color: var(--signal);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.nav-link {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  padding: 0 12px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-link:hover { color: #fff; border-bottom-color: var(--blue); }
+.nav-link.active { color: var(--signal); border-bottom-color: var(--signal); }
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  border-bottom: 1px solid var(--storm);
+  padding: 56px 0 48px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '∃X.P(X)';
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 80pt;
+  font-weight: 300;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.hero-ey {
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: var(--mono);
+  font-size: 32pt;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.hero-title strong {
+  font-weight: 500;
+  color: var(--signal);
+}
+
+.hero-sub {
+  font-size: 12pt;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 28px;
+  max-width: 600px;
+}
+
+.file-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: var(--mono);
+  font-size: 7pt;
+  padding: 4px 12px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.chip-rules  { background: rgba(24,95,165,0.3); color: var(--signal); border: 0.5px solid rgba(0,194,255,0.3); }
+.chip-persona{ background: rgba(29,181,132,0.2); color: var(--vrf); border: 0.5px solid rgba(29,181,132,0.3); }
+.chip-voice  { background: rgba(79,163,216,0.2); color: var(--sky); border: 0.5px solid rgba(79,163,216,0.3); }
+
+/* ── SECTION ── */
+.section {
+  margin-bottom: 52px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 22pt;
+  font-weight: 300;
+  color: var(--blue);
+  opacity: 0.4;
+  line-height: 1;
+  min-width: 32px;
+}
+
+.section-title {
+  font-family: var(--mono);
+  font-size: 11pt;
+  font-weight: 500;
+  color: var(--text1);
+  letter-spacing: 0.02em;
+}
+
+.section-file {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+/* ── COLOR SWATCHES ── */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.swatch {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+
+.swatch-color {
+  height: 52px;
+}
+
+.swatch-info {
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.swatch-name {
+  font-family: var(--mono);
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--text1);
+  margin-bottom: 2px;
+}
+
+.swatch-hex {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  color: var(--muted);
+}
+
+.swatch-use {
+  font-size: 6.5pt;
+  color: var(--text2);
+  line-height: 1.4;
+  margin-top: 3px;
+}
+
+.swatch-restricted {
+  border-top: 2px solid var(--signal);
+}
+
+/* ── TABLE ── */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.tbl th {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 8px 12px;
+  text-align: left;
+  background: var(--blue-light);
+  border-bottom: 1px solid var(--blue-b);
+}
+
+.tbl td {
+  padding: 9px 12px;
+  border-bottom: 0.5px solid var(--border);
+  font-size: 12px;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr:nth-child(even) td { background: #fafbfd; }
+
+.tbl td code {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--blue-light);
+  color: var(--blue-deep);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+/* ── RULE BOX ── */
+.rule-box {
+  border-left: 3px solid var(--blue);
+  background: var(--blue-light);
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 12px;
+}
+
+.rule-box.signal {
+  border-left-color: var(--signal);
+  background: rgba(0,194,255,0.06);
+}
+
+.rule-box.vrf {
+  border-left-color: var(--vrf);
+  background: var(--vrf-l);
+}
+
+.rule-box.warn {
+  border-left-color: #E24B4A;
+  background: #FCEBEB;
+}
+
+.rule-lbl {
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.rule-box.signal .rule-lbl { color: var(--signal); }
+.rule-box.vrf .rule-lbl    { color: var(--vrf-d); }
+.rule-box.warn .rule-lbl   { color: #A32D2D; }
+
+.rule-text {
+  font-size: 12px;
+  color: var(--text1);
+  line-height: 1.55;
+}
+
+/* ── FONT SHOWCASE ── */
+.font-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.font-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.font-card-top {
+  background: var(--navy);
+  padding: 16px;
+  min-height: 80px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.font-sample-mono {
+  font-family: var(--mono);
+  font-size: 22pt;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+}
+
+.font-sample-sans {
+  font-family: var(--sans);
+  font-size: 18pt;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.2;
+}
+
+.font-sample-serif {
+  font-family: 'Times New Roman', serif;
+  font-size: 16pt;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
+.font-card-body {
+  padding: 12px 14px;
+}
+
+.font-name {
+  font-family: var(--mono);
+  font-size: 8pt;
+  font-weight: 500;
+  color: var(--text1);
+  margin-bottom: 2px;
+}
+
+.font-fallback {
+  font-family: var(--mono);
+  font-size: 6.5pt;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.font-use {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* ── VOICE EXAMPLES ── */
+.voice-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.vc-good {
+  background: var(--vrf-l);
+  border: 0.5px solid rgba(29,181,132,0.35);
+  border-left: 3px solid var(--vrf);
+  border-radius: 0 4px 4px 0;
+  padding: 12px 14px;
+}
+
+.vc-bad {
+  background: #FCEBEB;
+  border: 0.5px solid rgba(162,45,45,0.2);
+  border-left: 3px solid #E24B4A;
+  border-radius: 0 4px 4px 0;
+  padding: 12px 14px;
+}
+
+.vc-lbl {
+  font-family: var(--mono);
+  font-size: 5.8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.vc-good .vc-lbl { color: var(--vrf-d); }
+.vc-bad  .vc-lbl { color: #A32D2D; }
+
+.vc-text {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--text1);
+}
+
+/* ── VOCAB TABLE ── */
+.vocab-row {
+  display: flex;
+  gap: 0;
+  border-bottom: 0.5px solid var(--border);
+  padding: 8px 0;
+  align-items: baseline;
+}
+
+.vocab-avoid {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #A32D2D;
+  text-decoration: line-through;
+  width: 200px;
+  flex-shrink: 0;
+  padding-right: 16px;
+}
+
+.vocab-use {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--vrf-d);
+  width: 200px;
+  flex-shrink: 0;
+  padding-right: 16px;
+}
+
+.vocab-reason {
+  font-size: 11px;
+  color: var(--text2);
+  flex: 1;
+}
+
+/* ── PERSONA CARDS ── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.persona-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.persona-card-hdr {
+  background: var(--navy);
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--blue);
+}
+
+.persona-card-title {
+  font-family: var(--mono);
+  font-size: 8pt;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+
+.persona-card-body {
+  padding: 12px 14px;
+}
+
+.persona-item {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+  align-items: flex-start;
+  font-size: 11.5px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+.persona-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* ── ANTI-PERSONA ── */
+.anti-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.anti-item {
+  background: #FCEBEB;
+  border: 0.5px solid rgba(162,45,45,0.2);
+  border-left: 2px solid #E24B4A;
+  border-radius: 0 3px 3px 0;
+  padding: 10px 12px;
+}
+
+.anti-label {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  font-weight: 500;
+  color: #A32D2D;
+  margin-bottom: 3px;
+}
+
+.anti-reason {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.45;
+}
+
+/* ── GALOIS FRAMING ── */
+.framing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.framing-good, .framing-bad {
+  border-radius: 3px;
+  padding: 10px 14px;
+}
+
+.framing-good { background: var(--vrf-l); border: 0.5px solid rgba(29,181,132,0.3); }
+.framing-bad  { background: #FCEBEB; border: 0.5px solid rgba(162,45,45,0.2); }
+
+.framing-lbl {
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.framing-good .framing-lbl { color: var(--vrf-d); }
+.framing-bad  .framing-lbl { color: #A32D2D; }
+
+.framing-item {
+  font-family: var(--mono);
+  font-size: 8pt;
+  line-height: 1.8;
+  color: var(--text1);
+}
+
+/* ── TAGLINE TABLE ── */
+.tagline-row {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.tagline-mark {
+  font-family: var(--mono);
+  font-size: 10pt;
+  font-weight: 500;
+  color: var(--blue-deep);
+}
+
+.tagline-use {
+  font-size: 11.5px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+.tagline-never {
+  font-size: 11px;
+  color: #A32D2D;
+  line-height: 1.5;
+}
+
+.tagline-lbl {
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+/* ── PIPELINE NODES ── */
+.pipeline-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--obsidian);
+  border-radius: 4px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.pd-node {
+  border-radius: 3px;
+  padding: 8px 10px;
+}
+
+.pd-sig { background: var(--navy); border: 0.5px solid var(--blue); border-left: 3px solid var(--signal); }
+.pd-mid { background: var(--slate); border: 0.5px solid var(--storm); border-left: 3px solid var(--blue); }
+.pd-sky { background: var(--obsidian); border: 0.5pt solid var(--storm); border-left: 3px solid var(--sky); }
+
+.pd-title { font-family: var(--mono); font-size: 8pt; font-weight: 500; color: #fff; }
+.pd-sub   { font-family: var(--mono); font-size: 6pt; color: rgba(255,255,255,0.42); margin-top: 1px; }
+.pd-title .cs { color: var(--signal); }
+.pd-title .ck { color: var(--sky); }
+
+.pd-arrow { text-align: center; color: var(--blue); font-size: 9pt; opacity: 0.5; padding: 2px 0; }
+
+/* ── TRL BAR DEMO ── */
+.trl-demo {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.trl-lbl {
+  font-family: var(--mono);
+  font-size: 6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+}
+
+.trl-cells {
+  display: flex;
+  gap: 3px;
+}
+
+.trl-cell {
+  flex: 1;
+  height: 28px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 8pt;
+  font-weight: 500;
+}
+
+.trl-active { background: var(--blue); color: #fff; }
+.trl-dim    { background: #E2E8F0; color: var(--muted); }
+
+.trl-sublabel {
+  font-family: var(--mono);
+  font-size: 5.5pt;
+  color: var(--sky);
+  text-align: center;
+  margin-top: 5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── SECTION LABEL DEMO ── */
+.sec-demo {
+  font-family: var(--mono);
+  font-size: 6pt;
+  font-weight: bold;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sec-demo::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 10px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.sec-light { color: var(--blue); background: var(--blue-light); border-bottom: 0.5px solid var(--blue-b); }
+.sec-dark  { color: var(--signal); background: var(--navy); border-bottom: 0.5px solid var(--storm); }
+.sec-mid   { color: var(--sky); background: var(--obsidian); border-bottom: 0.5px solid var(--storm); }
+
+/* ── LAYOUT DIAGRAM ── */
+.layout-diagram {
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.ld-header { background: var(--navy); height: 40px; display: flex; align-items: center; padding: 0 12px; }
+.ld-header-txt { font-family: var(--mono); font-size: 7pt; color: rgba(255,255,255,0.5); }
+.ld-body { display: flex; height: 120px; }
+.ld-left  { width: 25%; background: var(--surface); border-right: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; }
+.ld-center{ flex: 1; background: #fff; border-right: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; }
+.ld-right { width: 22%; background: var(--surface); display: flex; align-items: center; justify-content: center; }
+.ld-label { font-family: var(--mono); font-size: 6pt; color: var(--muted); text-align: center; line-height: 1.5; }
+.ld-footer { background: var(--surface); height: 22px; border-top: 0.5px solid var(--border); display: flex; align-items: center; padding: 0 12px; }
+.ld-footer-txt { font-family: var(--mono); font-size: 6pt; color: var(--muted); }
+
+/* ── CONFLICT TABLE ── */
+.conflict-tbl {
+  background: var(--navy);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 0;
+  border-bottom: 0.5px solid var(--storm);
+}
+
+.ct-row:last-child { border-bottom: none; }
+
+.ct-cell {
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 8pt;
+  line-height: 1.5;
+}
+
+.ct-type { background: var(--slate); color: var(--sky); border-right: 0.5px solid var(--storm); }
+.ct-winner { color: var(--signal); border-right: 0.5px solid var(--storm); }
+.ct-example { color: rgba(255,255,255,0.45); font-size: 7pt; }
+
+.ct-head .ct-cell { background: var(--obsidian); color: var(--muted); font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; }
+.ct-head .ct-type { background: var(--storm); }
+
+/* ── QUICK REFERENCE ── */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.qr-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-top: 3px solid var(--blue);
+  border-radius: 0 0 4px 4px;
+  padding: 14px;
+}
+
+.qr-card.rules  { border-top-color: var(--signal); }
+.qr-card.persona{ border-top-color: var(--vrf); }
+.qr-card.voice  { border-top-color: var(--sky); }
+
+.qr-title {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.qr-card.rules  .qr-title { color: var(--signal); }
+.qr-card.persona .qr-title { color: var(--vrf-d); }
+.qr-card.voice  .qr-title { color: var(--sky); }
+
+.qr-item {
+  font-family: var(--mono);
+  font-size: 7pt;
+  color: var(--text2);
+  padding: 3px 0;
+  border-bottom: 0.5px solid var(--border);
+  line-height: 1.45;
+}
+
+.qr-item:last-child { border-bottom: none; }
+
+/* ── OVERRIDE NOTE ── */
+.override-banner {
+  background: var(--obsidian);
+  border: 0.5px solid var(--storm);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 4px 4px 0;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+.override-banner strong { color: var(--signal); }
+
+/* ── FOOTER ── */
+.page-footer {
+  background: var(--navy);
+  border-top: 2px solid var(--blue);
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.pf-brand { font-family: var(--mono); font-size: 9pt; color: rgba(255,255,255,0.5); }
+.pf-brand strong { color: var(--blue); }
+.pf-wm { font-family: var(--mono); font-size: 18pt; color: rgba(255,255,255,0.07); }
+.pf-stamp { font-family: var(--mono); font-size: 6pt; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Exist<span>X</span></div>
+  <div class="nav-links">
+    <a class="nav-link active" href="#colors">Colors</a>
+    <a class="nav-link" href="#typography">Typography</a>
+    <a class="nav-link" href="#icons">Icons & Marks</a>
+    <a class="nav-link" href="#layout">Layout</a>
+    <a class="nav-link" href="#persona">Persona</a>
+    <a class="nav-link" href="#voice">Voice</a>
+    <a class="nav-link" href="#conflict">Conflict Rules</a>
+    <a class="nav-link" href="#quickref">Quick Ref</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-ey">ExistX, Inc. · Brand Guidelines · LLM Reference System</div>
+    <div class="hero-title">Brand<br><strong>Intelligence</strong><br>System</div>
+    <div class="hero-sub">Three authoritative files. One unified creative output. Drop into any LLM prompt to enforce ExistX brand compliance across visual design, document structure, and written copy.</div>
+    <div class="file-chips">
+      <span class="chip chip-rules">rules.md — Visual Law</span>
+      <span class="chip chip-persona">persona.md — Identity</span>
+      <span class="chip chip-voice">voice.md — Copy</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════════════════════ COLORS ═══════════════════════════════ -->
+<div class="section" id="colors">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title">Color Palette</div>
+    <span class="section-file chip chip-rules">rules.md</span>
+  </div>
+
+  <div class="override-banner">
+    <strong>Visual conflict rule:</strong> rules.md governs all color decisions. No other file may introduce a hex code not in this palette. If a use case is unaddressed, ask — do not guess.
+  </div>
+
+  <p style="font-size:12px;color:var(--text2);margin-bottom:16px;font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase;font-size:7pt;">Primary Palette</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#185FA5"></div><div class="swatch-info"><div class="swatch-name">Blue (Primary)</div><div class="swatch-hex">#185FA5</div><div class="swatch-use">Section borders, icons, CTAs, links, active states</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2172BE"></div><div class="swatch-info"><div class="swatch-name">Blue Mid</div><div class="swatch-hex">#2172BE</div><div class="swatch-use">Hover states</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0C447C"></div><div class="swatch-info"><div class="swatch-name">Blue Deep</div><div class="swatch-hex">#0C447C</div><div class="swatch-use">Pressed states. Text on light-blue panels</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E6F1FB"></div><div class="swatch-info"><div class="swatch-name">Blue Light</div><div class="swatch-hex">#E6F1FB</div><div class="swatch-use">Tint backgrounds. Icon cell fill on light</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#08152A"></div><div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-hex">#08152A</div><div class="swatch-use">Header, title slides, dark columns, footer</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0B1E38"></div><div class="swatch-info"><div class="swatch-name">Obsidian</div><div class="swatch-hex">#0B1E38</div><div class="swatch-use">Transition slides. Dark card fill</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1E2D42"></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#1E2D42</div><div class="swatch-use">Raised surfaces on dark. Step boxes</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2A3F5A"></div><div class="swatch-info"><div class="swatch-name">Storm</div><div class="swatch-hex">#2A3F5A</div><div class="swatch-use">Borders on dark surfaces</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F4F6F9"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#F4F6F9</div><div class="swatch-use">Page background. Light panel fill</div></div></div>
+  </div>
+
+  <p style="font-family:var(--mono);letter-spacing:0.05em;text-transform:uppercase;font-size:7pt;color:var(--muted);margin-bottom:12px;margin-top:8px;">Restricted Accents — Semantic Use Only</p>
+  <div class="swatch-grid">
+    <div class="swatch swatch-restricted"><div class="swatch-color" style="background:#00C2FF"></div><div class="swatch-info"><div class="swatch-name">Signal Blue ⚠</div><div class="swatch-hex">#00C2FF</div><div class="swatch-use"><strong>Active data only.</strong> HISTORIAN labels, eyebrows on dark, TRL active. NEVER decorative.</div></div></div>
+    <div class="swatch" style="border-top:2px solid #4FA3D8"><div class="swatch-color" style="background:#4FA3D8"></div><div class="swatch-info"><div class="swatch-name">Sky Blue</div><div class="swatch-hex">#4FA3D8</div><div class="swatch-use">Secondary data lines. Pipeline node labels on dark.</div></div></div>
+    <div class="swatch" style="border-top:2px solid #1DB584"><div class="swatch-color" style="background:#1DB584"></div><div class="swatch-info"><div class="swatch-name">Verified Green ⚠</div><div class="swatch-hex">#1DB584</div><div class="swatch-use"><strong>Verified/confirmed state only.</strong> Explainability, formal verification. Never decorative.</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0E8A63"></div><div class="swatch-info"><div class="swatch-name">Verified Deep</div><div class="swatch-hex">#0E8A63</div><div class="swatch-use">Verified text on light surfaces</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8F5EE"></div><div class="swatch-info"><div class="swatch-name">Verified BG</div><div class="swatch-hex">#E8F5EE</div><div class="swatch-use">Icon cell background for verified items</div></div></div>
+  </div>
+
+  <div class="rule-box signal">
+    <div class="rule-lbl">Hard Limit — Signal & Verified</div>
+    <div class="rule-text">#00C2FF (Signal) and #1DB584 (Verified) are <strong>semantic colors</strong>, not aesthetic choices. Signal indicates active/live data. Verified indicates mathematical proof or confirmed compliance. Using either decoratively undermines the brand's technical credibility.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ TYPOGRAPHY ═══════════════════════════════ -->
+<div class="section" id="typography">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title">Typography</div>
+    <span class="section-file chip chip-rules">rules.md</span>
+  </div>
+
+  <div class="font-grid">
+    <div class="font-card">
+      <div class="font-card-top"><div class="font-sample-mono">IBM Plex Mono</div></div>
+      <div class="font-card-body">
+        <div class="font-name">IBM Plex Mono</div>
+        <div class="font-fallback">Fallback: Liberation Mono, Courier New</div>
+        <div class="font-use">Display / technical identity. Eyebrows, section labels, pipeline nodes, the ∃X.P(X) mark, watermarks, TRL numbers, footer stamps.</div>
+      </div>
+    </div>
+    <div class="font-card">
+      <div class="font-card-top"><div class="font-sample-sans">IBM Plex Sans<br>clarity at scale</div></div>
+      <div class="font-card-body">
+        <div class="font-name">IBM Plex Sans</div>
+        <div class="font-fallback">Fallback: Liberation Sans, Arial</div>
+        <div class="font-use">Body copy, card text, capability titles, workflow descriptions, navigation, slide body copy.</div>
+      </div>
+    </div>
+    <div class="font-card">
+      <div class="font-card-top"><div class="font-sample-serif">Times New Roman<br>authority text</div></div>
+      <div class="font-card-body">
+        <div class="font-name">Times New Roman</div>
+        <div class="font-fallback">Fallback: Georgia, serif</div>
+        <div class="font-use"><strong>White papers only.</strong> Never in one-pagers, presentations, or capability briefs. 12pt body / 16pt leading.</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>Element</th><th>Size</th><th>Weight</th><th>Font</th><th>Treatment</th></tr></thead>
+    <tbody>
+      <tr><td>Page / slide title</td><td>24–28pt</td><td>300–400</td><td>IBM Plex Mono</td><td>Normal case</td></tr>
+      <tr><td>Section eyebrow</td><td>5.8–6.5pt</td><td>500</td><td>IBM Plex Mono</td><td>UPPERCASE · 0.12–0.16em letter-spacing</td></tr>
+      <tr><td>Section heading</td><td>18–22pt</td><td>400</td><td>IBM Plex Sans</td><td>Normal case</td></tr>
+      <tr><td>Body copy</td><td>11–12pt</td><td>400</td><td>IBM Plex Sans</td><td>1.45–1.6 line-height</td></tr>
+      <tr><td>Card title</td><td>7–9pt</td><td>500</td><td>IBM Plex Sans</td><td>Normal case</td></tr>
+      <tr><td>Pipeline node title</td><td>7.5–8pt</td><td>500</td><td>IBM Plex Mono</td><td>Normal case</td></tr>
+      <tr><td>Tag / chip</td><td>5–6pt</td><td>400</td><td>IBM Plex Mono</td><td>Normal or UPPERCASE</td></tr>
+      <tr><td>Footer stamp</td><td>5.5–6pt</td><td>400</td><td>IBM Plex Mono</td><td>UPPERCASE · 0.10em tracking</td></tr>
+      <tr><td>∃X.P(X) watermark</td><td>4–6% opacity</td><td>300</td><td>IBM Plex Mono</td><td>Dark surfaces only. Never full opacity.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════ ICONS & MARKS ═══════════════════════════════ -->
+<div class="section" id="icons">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title">Icons, Marks & Components</div>
+    <span class="section-file chip chip-rules">rules.md</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+    <div>
+      <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Section Label Variants</p>
+      <div style="margin-bottom:6px;"><span class="sec-demo sec-light">Light surface — blue label</span></div>
+      <div style="background:var(--navy);padding:6px;border-radius:3px;margin-bottom:6px;"><span class="sec-demo sec-dark">Dark surface — signal label</span></div>
+      <div style="background:var(--obsidian);padding:6px;border-radius:3px;"><span class="sec-demo sec-mid">Obsidian — sky label</span></div>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">TRL Bar (ExistX active zone: 4–6)</p>
+      <div class="trl-demo">
+        <div class="trl-lbl">HERMES Operating Zone — TRL</div>
+        <div class="trl-cells">
+          <div class="trl-cell trl-dim">1</div>
+          <div class="trl-cell trl-dim">2</div>
+          <div class="trl-cell trl-dim">3</div>
+          <div class="trl-cell trl-active">4</div>
+          <div class="trl-cell trl-active">5</div>
+          <div class="trl-cell trl-active">6</div>
+          <div class="trl-cell trl-dim">7</div>
+          <div class="trl-cell trl-dim">8</div>
+          <div class="trl-cell trl-dim">9</div>
+        </div>
+        <div class="trl-sublabel">Prototype & Experimentation Zone</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Pipeline Node Color Coding</p>
+  <div class="pipeline-demo">
+    <div class="pd-node pd-sig"><div class="pd-title"><span class="cs">HISTORIAN</span> — Primary Signal Node</div><div class="pd-sub">Signal (#00C2FF) left border · Navy (#08152A) background</div></div>
+    <div class="pd-arrow">↓</div>
+    <div class="pd-node pd-mid"><div class="pd-title">Secure Data & Policy Fabric</div><div class="pd-sub">Blue (#185FA5) left border · Slate (#1E2D42) background</div></div>
+    <div class="pd-arrow">↓</div>
+    <div class="pd-node pd-sky"><div class="pd-title"><span class="ck">Gemini</span> Workflow & Analytics</div><div class="pd-sub">Sky (#4FA3D8) left border · Obsidian (#0B1E38) background</div></div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-lbl">Icon Rules</div>
+    <div class="rule-text">Line art only. 1–1.5px stroke. No fill, no gradient, no shadow, no 3D. Feather / Heroicons style SVG. stroke-linecap: round; stroke-linejoin: round. Never emoji. Never filled icons. Never icons from consumer design systems (Material, SF Symbols).</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ LAYOUT ═══════════════════════════════ -->
+<div class="section" id="layout">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title">Layout Architecture</div>
+    <span class="section-file chip chip-rules">rules.md</span>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Portrait One-Pager (8.5 × 11in)</p>
+  <div class="layout-diagram">
+    <div class="ld-header"><span class="ld-header-txt">Header — #08152A navy full-width · 4pt #185FA5 left border rule · POC panel right (#1E2D42)</span></div>
+    <div class="ld-body">
+      <div class="ld-left"><div class="ld-label">Left Col<br>2.05in<br>Mission Need<br>Workflow<br>Impact</div></div>
+      <div class="ld-center"><div class="ld-label">Centre Col<br>flexible<br>Schematic / Diagram<br>Key Standards</div></div>
+      <div class="ld-right"><div class="ld-label">Right Col<br>1.9in<br>Capabilities<br>Approach</div></div>
+    </div>
+    <div class="ld-footer"><span class="ld-footer-txt">Footer — #F4F6F9 surface · brand left · ∃X.P(X) center watermark · stamp right</span></div>
+  </div>
+
+  <div class="rule-box warn" style="margin-bottom:12px;">
+    <div class="rule-lbl">PDF Print Rule — CSS Grid Not Supported</div>
+    <div class="rule-text">wkhtmltopdf uses an older WebKit engine. CSS Grid layouts collapse to single column in print mode. Use <code>&lt;table&gt;</code> with explicit column widths for all print/PDF deliverables. CSS Grid works correctly in modern browsers (Chrome print-to-PDF).</div>
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>Document Type</th><th>Dimensions</th><th>Key Layout Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Portrait one-pager</td><td>8.5 × 11in</td><td>3-column table. Approach section stacked vertically in right column.</td></tr>
+      <tr><td>Landscape one-pager</td><td>11 × 8.5in</td><td>3-column table. Approach becomes full-width horizontal timeline at page bottom.</td></tr>
+      <tr><td>Presentation (dark slide)</td><td>1280×720px (16:9)</td><td>Navy background only. For: Title, Transition, Close slides.</td></tr>
+      <tr><td>Presentation (light slide)</td><td>1280×720px (16:9)</td><td>White background. 3px blue left rule. Navy header bar.</td></tr>
+      <tr><td>White paper</td><td>Letter, 1in margins</td><td>4.5in body / 1.75in sidebar / 0.25in gutter. Times New Roman body.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="rule-box">
+    <div class="rule-lbl">Slide Hierarchy — Non-Negotiable</div>
+    <div class="rule-text">Every presentation: Opens dark → transitions dark → closes dark. Body slides are light. Never open or close on a light slide. The structural rhythm — dark/light/dark — is intentional and brand-defining.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PERSONA ═══════════════════════════════ -->
+<div class="section" id="persona">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title">Brand Persona & Identity</div>
+    <span class="section-file chip chip-persona">persona.md</span>
+  </div>
+
+  <div class="rule-box vrf" style="margin-bottom:16px;">
+    <div class="rule-lbl">Mission Statement (verbatim — do not paraphrase)</div>
+    <div class="rule-text" style="font-family:var(--mono);font-size:9pt;line-height:1.6;">"ExistX operationalizes the world's most advanced applied research — deploying formally verified, mission-ready capabilities in the classified environments where they are needed most."</div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Galois Relationship Framing — Apply Exactly</p>
+  <div class="framing-grid">
+    <div class="framing-good">
+      <div class="framing-lbl">✓ Correct</div>
+      <div class="framing-item">
+        "primary research partner"<br>
+        "preferred structural access to Galois's R&D"<br>
+        "works alongside Galois"<br>
+        "Galois-to-ExistX pipeline"<br>
+        "Galois provides research; ExistX operationalizes"
+      </div>
+    </div>
+    <div class="framing-bad">
+      <div class="framing-lbl">✗ Never Write This</div>
+      <div class="framing-item">
+        "parent company"<br>
+        "sister company"<br>
+        "spun off from Galois" (implies separation)<br>
+        "Galois vendor"<br>
+        "we are Galois"
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Tagline Usage — Context-Specific</p>
+  <div class="tagline-row">
+    <div><div class="tagline-lbl">Tagline</div><div class="tagline-mark">"Never start at zero."</div></div>
+    <div><div class="tagline-lbl">Use for</div><div class="tagline-use">First contact. External audiences. Cold outreach. Capability briefs. Marketing materials.</div></div>
+    <div><div class="tagline-lbl">Never for</div><div class="tagline-never">Internal planning. After the relationship is established (sounds hollow).</div></div>
+  </div>
+  <div class="tagline-row">
+    <div><div class="tagline-lbl">Tagline</div><div class="tagline-mark">"The solution exists."</div></div>
+    <div><div class="tagline-lbl">Use for</div><div class="tagline-use">Narrative contexts. About page. Pitch decks after the problem is established.</div></div>
+    <div><div class="tagline-lbl">Never for</div><div class="tagline-never">Headlines. Opening statements. Cold email subject lines.</div></div>
+  </div>
+  <div class="tagline-row">
+    <div><div class="tagline-lbl">Mark</div><div class="tagline-mark">∃X.P(X)</div></div>
+    <div><div class="tagline-lbl">Use for</div><div class="tagline-use">Visual watermark only. IBM Plex Mono, 4–6% opacity on dark surfaces. Mathematical confirmation.</div></div>
+    <div><div class="tagline-lbl">Never for</div><div class="tagline-never">First impression. Cold outreach. Oral delivery. Full-opacity display. Explanation of itself.</div></div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;margin-top:20px;">Anti-Persona — What ExistX Refuses to Be</p>
+  <div class="anti-grid">
+    <div class="anti-item"><div class="anti-label">"Technology transition firm"</div><div class="anti-reason">Jargon. Undifferentiated. Every GovCon shop says this. Describes process, not mission.</div></div>
+    <div class="anti-item"><div class="anti-label">"GovCon software developer"</div><div class="anti-reason">Commodity framing. Implies staff augmentation. Undersells the research depth.</div></div>
+    <div class="anti-item"><div class="anti-label">"Startup"</div><div class="anti-reason">Signals instability. Use "defense-tech firm" or "mission-focused company."</div></div>
+    <div class="anti-item"><div class="anti-label">"Advise and leave"</div><div class="anti-reason">The core anti-pattern. ExistX deploys and sustains. Never implies consulting posture.</div></div>
+    <div class="anti-item"><div class="anti-label">Consumer tech aesthetic</div><div class="anti-reason">Rounded corners, pastel colors, emoji, illustration-heavy layouts. Incompatible with the brand.</div></div>
+    <div class="anti-item"><div class="anti-label">Overpromise</div><div class="anti-reason">Never claim customer-validated outcomes not yet confirmed. Distinguish: demonstrated vs. deployed vs. planned.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ VOICE ═══════════════════════════════ -->
+<div class="section" id="voice">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-title">Voice & Copy Rules</div>
+    <span class="section-file chip chip-voice">voice.md</span>
+  </div>
+
+  <div class="rule-box" style="margin-bottom:16px;">
+    <div class="rule-lbl">Voice in One Line</div>
+    <div class="rule-text" style="font-family:var(--mono);font-size:9pt;">Precise. Direct. Operationally credible. Never loud.<br><span style="color:var(--muted);font-size:8pt;">ExistX writes the way a cleared senior engineer speaks to a program manager — with technical authority, no wasted words, and zero hype.</span></div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Approved vs. Rejected Copy</p>
+
+  <div class="voice-compare">
+    <div class="vc-good">
+      <div class="vc-lbl">✓ Approved</div>
+      <div class="vc-text">"Critical technologies stall at TRL 4–6 because the path from government-funded research to classified deployment has never been built. ExistX builds it."</div>
+    </div>
+    <div class="vc-bad">
+      <div class="vc-lbl">✗ Rejected</div>
+      <div class="vc-text">"At ExistX, we are passionate about leveraging cutting-edge research to deliver innovative, best-in-class solutions that help our government partners achieve their mission objectives."</div>
+    </div>
+  </div>
+
+  <div class="voice-compare">
+    <div class="vc-good">
+      <div class="vc-lbl">✓ Approved — Slide Headline</div>
+      <div class="vc-text">"No competitor holds all five structural advantages simultaneously."</div>
+    </div>
+    <div class="vc-bad">
+      <div class="vc-lbl">✗ Rejected — Slide Headline</div>
+      <div class="vc-text">"Competitive Landscape"</div>
+    </div>
+  </div>
+
+  <div class="voice-compare">
+    <div class="vc-good">
+      <div class="vc-lbl">✓ Approved — Cold Outreach Subject</div>
+      <div class="vc-text">"The cryptography deadline is January 2027. ExistX is already deployed."</div>
+    </div>
+    <div class="vc-bad">
+      <div class="vc-lbl">✗ Rejected — Cold Outreach Opening</div>
+      <div class="vc-text">"I wanted to reach out to touch base and see if there might be a good time to connect..."</div>
+    </div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;margin-top:20px;">Vocabulary — Avoid / Replace</p>
+  <div style="background:#fff;border:0.5px solid var(--border);border-radius:4px;overflow:hidden;padding:0 14px;margin-bottom:16px;">
+    <div style="display:flex;gap:0;padding:7px 0;border-bottom:0.5px solid var(--border);">
+      <div style="width:200px;font-family:var(--mono);font-size:6.5pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);flex-shrink:0;">Avoid</div>
+      <div style="width:200px;font-family:var(--mono);font-size:6.5pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);flex-shrink:0;padding-left:16px;">Replace with</div>
+      <div style="font-family:var(--mono);font-size:6.5pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Reason</div>
+    </div>
+    <div class="vocab-row"><div class="vocab-avoid">"leverage"</div><div class="vocab-use" style="padding-left:16px;">"use" / be specific</div><div class="vocab-reason">Meaningless filler in professional contexts</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"innovative / cutting-edge"</div><div class="vocab-use" style="padding-left:16px;">Name the specific advance</div><div class="vocab-reason">Unproven claim. Name what is new and why.</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"solution" (as generic noun)</div><div class="vocab-use" style="padding-left:16px;">Name the capability</div><div class="vocab-reason">Every competitor says this. Be specific.</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"help" (as ExistX's role)</div><div class="vocab-use" style="padding-left:16px;">"operationalize" / "deploy"</div><div class="vocab-reason">Too soft. ExistX doesn't help — it executes.</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"best-in-class"</div><div class="vocab-use" style="padding-left:16px;">Prove it or omit</div><div class="vocab-reason">Unverifiable superlative. Credibility cost.</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"synergy / ecosystem"</div><div class="vocab-use" style="padding-left:16px;">Never</div><div class="vocab-reason">Corporate filler. Signals weak thinking.</div></div>
+    <div class="vocab-row"><div class="vocab-avoid">"consult" (describing ExistX)</div><div class="vocab-use" style="padding-left:16px;">integrate / deploy / sustain</div><div class="vocab-reason">Core anti-pattern. ExistX is not a consultancy.</div></div>
+  </div>
+
+  <p style="font-family:var(--mono);font-size:7pt;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Epistemic Precision — Status Language</p>
+  <table class="tbl">
+    <thead><tr><th>Status</th><th>Approved Language</th><th>Never Say</th></tr></thead>
+    <tbody>
+      <tr><td>Confirmed, in production</td><td>"deployed," "operational," "in production"</td><td>"We've deployed..." without specifics</td></tr>
+      <tr><td>Demonstrated on hardware</td><td>"demonstrated on physical PSIL hardware"</td><td>"proven" (implies broader validation)</td></tr>
+      <tr><td>Active development</td><td>"in active development," "Phase 1 target"</td><td>"coming soon," "launching soon"</td></tr>
+      <tr><td>High-probability pending</td><td>"high-probability pending award," "imminent"</td><td>"awarded" before confirmation</td></tr>
+      <tr><td>Roadmap / aspiration</td><td>"2026 priority," "planned," "roadmap target"</td><td>State as current fact</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════ CONFLICT ═══════════════════════════════ -->
+<div class="section" id="conflict">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div class="section-title">Conflict Resolution Rules</div>
+    <span class="section-file chip chip-rules">All files</span>
+  </div>
+
+  <div class="conflict-tbl">
+    <div class="ct-row ct-head">
+      <div class="ct-cell ct-type">Conflict Type</div>
+      <div class="ct-cell ct-winner">Winning File</div>
+      <div class="ct-cell ct-example">Example</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-type">Visual / layout / color</div>
+      <div class="ct-cell ct-winner">rules.md wins</div>
+      <div class="ct-cell ct-example">persona.md says "warm" but rules.md has no warm tones — use the rules palette only</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-type">Written copy / tone</div>
+      <div class="ct-cell ct-winner">voice.md wins</div>
+      <div class="ct-cell ct-example">persona.md says "confident" — voice.md defines exactly what confident sounds like</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-type">Brand claims / positioning</div>
+      <div class="ct-cell ct-winner">persona.md wins</div>
+      <div class="ct-cell ct-example">voice.md says "be specific" — persona.md defines which specific claims are approved</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-type">Missing detail (any file)</div>
+      <div class="ct-cell ct-winner">Ask the user</div>
+      <div class="ct-cell ct-example">No color specified for new use case — do not guess; ask before proceeding</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-type">User request vs. brand rules</div>
+      <div class="ct-cell ct-winner">Brand rules win</div>
+      <div class="ct-cell ct-example">User asks for purple accent — explain the palette constraint; offer the nearest on-brand alternative</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ QUICK REF ═══════════════════════════════ -->
+<div class="section" id="quickref">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-title">Quick Reference — LLM Prompt Checklist</div>
+    <span class="section-file chip chip-rules">All files</span>
+  </div>
+
+  <div class="qr-grid">
+    <div class="qr-card rules">
+      <div class="qr-title">rules.md — Visual Checks</div>
+      <div class="qr-item">Only hex codes from the approved palette</div>
+      <div class="qr-item">Signal (#00C2FF) = active data only</div>
+      <div class="qr-item">Verified (#1DB584) = verified state only</div>
+      <div class="qr-item">IBM Plex Mono for all labels & eyebrows</div>
+      <div class="qr-item">IBM Plex Sans for all body copy</div>
+      <div class="qr-item">Line art SVG icons only — no fill, no gradient</div>
+      <div class="qr-item">∃X.P(X) = watermark only, 4–6% opacity</div>
+      <div class="qr-item">Use &lt;table&gt; not CSS Grid for PDF layouts</div>
+      <div class="qr-item">Decks: open dark, close dark</div>
+      <div class="qr-item">@page margins = 0, control via padding</div>
+    </div>
+    <div class="qr-card persona">
+      <div class="qr-title">persona.md — Identity Checks</div>
+      <div class="qr-item">Galois = "primary research partner" — never parent/sister</div>
+      <div class="qr-item">Primary verb: operationalize</div>
+      <div class="qr-item">"Never start at zero" = external/first contact only</div>
+      <div class="qr-item">∃X.P(X) = visual mark, not oral opener</div>
+      <div class="qr-item">Five differentiators listed together</div>
+      <div class="qr-item">ExistX deploys & sustains — never "advises"</div>
+      <div class="qr-item">Never: "startup," "consulting," "technology transition firm"</div>
+      <div class="qr-item">Distinguish: demonstrated vs. deployed vs. planned</div>
+      <div class="qr-item">Mission statement: verbatim, do not paraphrase</div>
+      <div class="qr-item">Consumer aesthetic = brand violation</div>
+    </div>
+    <div class="qr-card voice">
+      <div class="qr-title">voice.md — Copy Checks</div>
+      <div class="qr-item">Lead with mission-critical fact, not company name</div>
+      <div class="qr-item">Short sentences carry weight — use them</div>
+      <div class="qr-item">No throat-clearing sentences</div>
+      <div class="qr-item">Slide headlines = declarative sentences</div>
+      <div class="qr-item">Numbers always specific: "$2.7M," "January 2027"</div>
+      <div class="qr-item">En dash (–) for ranges, em dash (—) for pause</div>
+      <div class="qr-item">Oxford comma always</div>
+      <div class="qr-item">Spell out acronyms on first use</div>
+      <div class="qr-item">Bold = one key phrase per paragraph maximum</div>
+      <div class="qr-item">Never: "excited to," "leverage," "best-in-class"</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="pf-brand"><strong>ExistX</strong>, Inc. — Brand Intelligence System · Confidential</div>
+  <div class="pf-wm">∃X.P(X)</div>
+  <div class="pf-stamp">rules.md · persona.md · voice.md<br>April 2026 · Dayton, OH</div>
+</div>
+
+<script>
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-48px 0px 0px 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
