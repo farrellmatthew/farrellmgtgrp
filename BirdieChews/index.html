@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birdie Chews — Brand Book v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --course-green: #2A4A3A;
+    --course-green-deep: #1F3A2C;
+    --heirloom-cream: #F3EBD7;
+    --heirloom-cream-deep: #E8DFC4;
+    --tobacco-brown: #6B4E2E;
+    --member-navy: #1F2A44;
+    --burnt-orange: #B85C2A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--heirloom-cream);
+    color: var(--course-green);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Layout */
+  .page { max-width: 1080px; margin: 0 auto; padding: 0 56px; }
+  .narrow { max-width: 680px; margin: 0 auto; }
+
+  /* Type system */
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .display { font-family: 'DM Serif Display', serif; }
+  .sans { font-family: 'Inter', sans-serif; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  h1.cover {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(72px, 11vw, 132px);
+    line-height: 0.95;
+    color: var(--course-green);
+    letter-spacing: -0.005em;
+  }
+
+  h2.section {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    color: var(--course-green-deep);
+    font-weight: 400;
+    margin-bottom: 32px;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 30px;
+    color: var(--tobacco-brown);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  p { margin-bottom: 18px; max-width: 64ch; }
+  p.lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--course-green);
+    max-width: 26ch;
+  }
+
+  blockquote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.25;
+    color: var(--course-green-deep);
+    border-left: 3px solid var(--burnt-orange);
+    padding: 8px 0 8px 32px;
+    margin: 32px 0;
+    max-width: 30ch;
+  }
+
+  em { font-style: italic; }
+  strong { font-weight: 600; color: var(--course-green-deep); }
+
+  hr.rule {
+    border: 0;
+    height: 1px;
+    background: var(--tobacco-brown);
+    opacity: 0.3;
+    margin: 0;
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--burnt-orange);
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.8em;
+    padding-left: 0.8em;
+    margin: 56px 0;
+    user-select: none;
+  }
+
+  /* Navigation */
+  nav.toc {
+    position: sticky;
+    top: 0;
+    background: var(--heirloom-cream);
+    border-bottom: 1px solid rgba(107, 78, 46, 0.18);
+    z-index: 10;
+    padding: 18px 56px;
+    backdrop-filter: blur(8px);
+  }
+  nav.toc .inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  nav.toc .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--course-green-deep);
+  }
+  nav.toc ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  nav.toc a {
+    color: var(--course-green);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  nav.toc a:hover { color: var(--burnt-orange); }
+
+  /* Sections */
+  section { padding: 96px 0; }
+  section.cover { padding: 140px 0 120px; text-align: center; }
+  section.cover .accent-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--burnt-orange);
+    margin: 28px auto 36px;
+  }
+  section.cover .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--tobacco-brown);
+    max-width: 30ch;
+    margin: 0 auto 20px;
+    line-height: 1.4;
+  }
+  section.cover .meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+    margin-top: 32px;
+  }
+
+  section.dark {
+    background: var(--course-green);
+    color: var(--heirloom-cream);
+  }
+  section.dark h2.section { color: var(--heirloom-cream); }
+  section.dark h3 { color: var(--heirloom-cream-deep); opacity: 0.85; }
+  section.dark p { color: var(--heirloom-cream); opacity: 0.92; }
+  section.dark .eyebrow { color: var(--burnt-orange); opacity: 1; }
+  section.dark blockquote { color: var(--heirloom-cream); border-left-color: var(--burnt-orange); }
+  section.dark strong { color: var(--heirloom-cream); }
+
+  /* Two-column comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(107, 78, 46, 0.25);
+    margin-top: 32px;
+  }
+  .compare > div {
+    padding: 22px 28px;
+    border-bottom: 1px solid rgba(107, 78, 46, 0.15);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.35;
+  }
+  .compare > div:nth-child(odd) {
+    border-right: 1px solid rgba(107, 78, 46, 0.25);
+    color: var(--course-green-deep);
+  }
+  .compare > div:nth-child(even) {
+    color: var(--tobacco-brown);
+    font-style: italic;
+    opacity: 0.85;
+  }
+  .compare .header {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--burnt-orange) !important;
+    padding-bottom: 14px;
+    font-style: normal !important;
+    opacity: 1 !important;
+  }
+
+  /* Color palette */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .swatch {
+    aspect-ratio: 1 / 1.25;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--heirloom-cream);
+    font-family: 'Inter', sans-serif;
+    border-radius: 2px;
+  }
+  .swatch .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .swatch .hex {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .swatch.s1 { background: var(--course-green); }
+  .swatch.s2 { background: var(--heirloom-cream-deep); color: var(--course-green-deep); }
+  .swatch.s2 .hex { opacity: 1; color: var(--tobacco-brown); }
+  .swatch.s3 { background: var(--tobacco-brown); }
+  .swatch.s4 { background: var(--member-navy); }
+  .swatch.s5 { background: var(--burnt-orange); }
+
+  .ratio-bar {
+    display: flex;
+    height: 14px;
+    margin-top: 22px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .ratio-bar > div:nth-child(1) { background: var(--course-green); flex: 60; }
+  .ratio-bar > div:nth-child(2) { background: var(--tobacco-brown); flex: 30; }
+  .ratio-bar > div:nth-child(3) { background: var(--burnt-orange); flex: 10; }
+  .ratio-labels {
+    display: flex;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+  }
+  .ratio-labels span:nth-child(1) { flex: 60; }
+  .ratio-labels span:nth-child(2) { flex: 30; }
+  .ratio-labels span:nth-child(3) { flex: 10; }
+
+  /* Type specimen */
+  .specimen {
+    border-top: 1px solid rgba(107, 78, 46, 0.25);
+    padding: 32px 0;
+  }
+  .specimen .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+    margin-bottom: 16px;
+  }
+  .specimen .show {
+    line-height: 1;
+  }
+
+  /* Sample copy cards */
+  .copy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .copy-card {
+    background: var(--heirloom-cream-deep);
+    padding: 32px 30px;
+    border-left: 3px solid var(--burnt-orange);
+  }
+  .copy-card .context {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tobacco-brown);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .copy-card .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--course-green-deep);
+  }
+
+  /* Lexicon */
+  .lex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 32px;
+  }
+  .lex h4 { margin-top: 0; }
+  .lex p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--course-green-deep);
+  }
+  .lex.banned p { color: var(--tobacco-brown); text-decoration: line-through; opacity: 0.7; }
+
+  /* Voice rules list */
+  ol.rules {
+    list-style: none;
+    counter-reset: rule;
+    margin-top: 24px;
+  }
+  ol.rules li {
+    counter-increment: rule;
+    position: relative;
+    padding: 22px 0 22px 60px;
+    border-bottom: 1px solid rgba(107, 78, 46, 0.15);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--course-green-deep);
+  }
+  ol.rules li::before {
+    content: counter(rule, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 22px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--burnt-orange);
+    letter-spacing: 0.04em;
+  }
+
+  /* Do/Don't grid */
+  .dodont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .dodont > div {
+    padding: 28px 30px;
+    border-radius: 2px;
+  }
+  .dodont .do { background: var(--course-green); color: var(--heirloom-cream); }
+  .dodont .dont { background: var(--heirloom-cream-deep); color: var(--course-green-deep); }
+  .dodont h4 { color: inherit; margin-top: 0; opacity: 0.85; }
+  .dodont .do h4 { color: var(--burnt-orange); }
+  .dodont ul { list-style: none; }
+  .dodont li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    padding: 10px 0;
+    line-height: 1.45;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .dodont .dont li { border-bottom-color: rgba(107, 78, 46, 0.15); }
+  .dodont li:last-child { border-bottom: none; }
+
+  /* Mock tin */
+  .tin-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 0;
+    background: var(--course-green-deep);
+    margin: 48px 0;
+    border-radius: 2px;
+  }
+  .tin {
+    width: 240px;
+    height: 240px;
+    background: var(--tobacco-brown);
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35), inset 0 -3px 0 rgba(0,0,0,0.25), inset 0 2px 0 rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    color: var(--heirloom-cream);
+    text-align: center;
+  }
+  .tin .lid-rim {
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(243, 235, 215, 0.18);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .tin .mono {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 48px;
+    letter-spacing: -0.02em;
+    color: var(--burnt-orange);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .tin .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--heirloom-cream);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .tin .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--heirloom-cream-deep);
+    opacity: 0.75;
+  }
+
+  /* Pitch block */
+  .pitch {
+    background: var(--course-green-deep);
+    color: var(--heirloom-cream);
+    padding: 64px 56px;
+    border-radius: 2px;
+    margin-top: 32px;
+  }
+  .pitch p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.55;
+    color: var(--heirloom-cream);
+    max-width: 60ch;
+  }
+  .pitch p.kicker {
+    font-style: italic;
+    font-size: 30px;
+    color: var(--burnt-orange);
+    margin-top: 24px;
+    max-width: 30ch;
+  }
+
+  /* Colophon */
+  footer.colophon {
+    background: var(--course-green-deep);
+    color: var(--heirloom-cream);
+    padding: 64px 0;
+    text-align: center;
+  }
+  footer.colophon .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--burnt-orange);
+    margin-bottom: 20px;
+  }
+  footer.colophon p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin: 4px auto;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 760px) {
+    .page { padding: 0 28px; }
+    nav.toc { padding: 14px 24px; }
+    nav.toc .inner { flex-direction: column; align-items: flex-start; }
+    nav.toc ul { gap: 16px; }
+    .compare, .copy-grid, .lex-grid, .dodont { grid-template-columns: 1fr; }
+    .palette { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 56px 0; }
+    .pitch { padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <div class="inner">
+    <div class="mark">Birdie Chews</div>
+    <ul>
+      <li><a href="#brand">The Brand</a></li>
+      <li><a href="#audience">The Audience</a></li>
+      <li><a href="#voice">How We Talk</a></li>
+      <li><a href="#look">How It Looks</a></li>
+      <li><a href="#house">House Rules</a></li>
+      <li><a href="#product">The Product</a></li>
+      <li><a href="#pitch">The Pitch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="cover">
+  <div class="page">
+    <div class="eyebrow">Brand Book — Volume One</div>
+    <h1 class="cover">Birdie Chews</h1>
+    <div class="accent-rule"></div>
+    <p class="subtitle">Yes-sir manners with a send-it engine underneath.</p>
+    <p class="meta">Halfway-house Coded · 2026 · For the Boys, the Turn, &amp; the Long Saturday After</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="brand">
+  <div class="page narrow">
+    <div class="eyebrow">Section One</div>
+    <h2 class="section">The Brand</h2>
+
+    <blockquote>
+      We don't sell a better golf game. We sell the part of golf that happens between the golf.
+    </blockquote>
+
+    <h3>The Insight</h3>
+    <p>The existing golf cannabis brands all sell performance — "focus, calm, swing tempo." Our customer doesn't want help playing better. He plays plenty well. What he wants is the buzz that fits the round, the turn, and the long Saturday after. Wellness brands are not talking to him. We are.</p>
+
+    <h3>The Positioning</h3>
+    <p class="lead">Halfway-house-coded weed gummy for guys who'd rather be at the turn than the tavern.</p>
+
+    <h3>The Promise</h3>
+    <p>The right buzz for the round, the turn, and the long Saturday after — without the hangover or the headache. <strong>Two for the turn. One for the porch.</strong></p>
+
+    <h3>The Pillars</h3>
+    <ol class="rules">
+      <li>Insider, not outsider. If you have to ask what the turn is, the brand isn't for you.</li>
+      <li>Discreet, not loud. The tin sits on the kitchen counter when his mother visits. No cannabis iconography — ever.</li>
+      <li>Send-it, but answer your mother's call. Loose with the boys, polished in public, never apologizing for either.</li>
+      <li>Heirloom-coded, post-college honest. Looks like 1965. Feels like 2026.</li>
+    </ol>
+
+    <h3>What We Are. What We Are Not.</h3>
+    <div class="compare">
+      <div class="header">We are</div>
+      <div class="header">We are not</div>
+      <div>Halfway-house coded</div><div>Country-club coded</div>
+      <div>Heirloom premium</div><div>Dispensary clinical</div>
+      <div>Insider Southern</div><div>Coastal cool</div>
+      <div>Voice with manners</div><div>Wellness with whispers</div>
+      <div>The buzz that fits</div><div>The performance enhancer</div>
+      <div>Yes-sir, send-it</div><div>Stoner, wake-and-bake</div>
+      <div>Quiet on the counter</div><div>Loud on the shelf</div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">· · ·</div>
+
+<section id="audience" class="dark">
+  <div class="page narrow">
+    <div class="eyebrow">Section Two</div>
+    <h2 class="section">The Audience</h2>
+    <p class="lead" style="color: var(--heirloom-cream);">He's 26. He went to one of the schools. The uniform's been the same since rush week sophomore year.</p>
+    <p>Commercial real estate, medical device sales, or "Dad's company" — the answer is always vague because the answer is always "I make more than you'd guess." Says ma'am and sir to anyone over 40. Says brotherrr to anyone under it. Drives a charcoal Tahoe. Plays in salmon shorts. Owns a Yeti for every occasion. Has been to more weddings in the last three years than most people attend in a lifetime.</p>
+    <p>He doesn't drink at bars — not because he's sober, but because he genuinely cannot stand a sticky floor or a cloud of smoke parked outside the door, and he'll tell you so with the conviction of a man delivering a sermon. He saves the bourbon for weddings, the beer for tailgates, and the rest of the time he's two-deep on the leather recliner with the SEC slate on. He has opinions on Chip Kelly, on smash burger doneness, on the correct width of a tie. The infuriating part is he's mostly right.</p>
+    <blockquote style="color: var(--burnt-orange); border-left-color: var(--burnt-orange);">Respectfully, brotherrr — why are we standing in a puddle when we could be on my back porch?</blockquote>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="page narrow">
+    <div class="eyebrow">Section Three</div>
+    <h2 class="section">How We Talk</h2>
+
+    <h3>The Voice Principle</h3>
+    <p class="lead">Yes-sir manners with a send-it engine underneath.</p>
+    <p>Every line of copy passes the same test: would the persona send it in his groomsmen group chat <em>and</em> would his mother smile at it on the kitchen counter? Both yes — ship it. Either no — hold it.</p>
+
+    <h3>Voice Rules</h3>
+    <ol class="rules">
+      <li>Insider, not explainer. Never define "the turn" or "halfway house." If you know, you know.</li>
+      <li>Southern lawyer cadence for the jokes. "Respectfully, brotherrr" energy.</li>
+      <li>Self-aware without leaning in. The frat is in the bones, not the labels.</li>
+      <li>Discreet on cannabis. No "high," no "lifted." Say two-deep, paceable, the right amount.</li>
+      <li>Respect what shouldn't be sent. The brand acknowledges Sundays, mothers, weddings, and work.</li>
+      <li>Short, with rhythm. Read every line out loud. If it doesn't have cadence, cut it.</li>
+    </ol>
+
+    <h3>Sample Copy</h3>
+    <div class="copy-grid">
+      <div class="copy-card">
+        <div class="context">Back of Tin</div>
+        <div class="quote">Made for guys who'd rather be at the turn than the tavern. Two for the turn. One for the porch.</div>
+      </div>
+      <div class="copy-card">
+        <div class="context">Instagram</div>
+        <div class="quote">Pressed by noon. Cooked by four. Respectfully.</div>
+      </div>
+      <div class="copy-card">
+        <div class="context">Web Hero</div>
+        <div class="quote">For guys who'd rather be at the turn than the tavern.</div>
+      </div>
+      <div class="copy-card">
+        <div class="context">Email Subject</div>
+        <div class="quote">The boys are meeting at the turn.</div>
+      </div>
+      <div class="copy-card">
+        <div class="context">Hat Back-Strap</div>
+        <div class="quote">Yes-sir. Send-it.</div>
+      </div>
+      <div class="copy-card">
+        <div class="context">Licensee Headline</div>
+        <div class="quote">The golf gummy for guys the wellness brands aren't talking to.</div>
+      </div>
+    </div>
+
+    <h3>Lexicon</h3>
+    <div class="lex-grid">
+      <div class="lex">
+        <h4>Use Liberally</h4>
+        <p>The turn · the halfway house · cart path · back nine · the boys · Saturday · the porch · pressed · loose · two-deep · send it · brotherrr · mama · yes-sir · no-witness · honest · right amount · paceable</p>
+      </div>
+      <div class="lex banned">
+        <h4>Never. Not Once.</h4>
+        <p>high · stoned · lit · baked · lifted · blazed · dank · kush · 420 · wellness · mindful · journey · vibes · squad · bro · dude · fam · premium (as adjective) · made with love</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">· · ·</div>
+
+<section id="look">
+  <div class="page narrow">
+    <div class="eyebrow">Section Four</div>
+    <h2 class="section">How It Looks</h2>
+
+    <h3>The Palette</h3>
+    <p>Five colors. Sixty / thirty / ten. Course green and heirloom cream do the bones. Tobacco brown and member navy bring the warmth. Sun-faded burnt orange is the only thing that pops — and it pops once per composition. Cannabis green is banned at sight.</p>
+
+    <div class="palette">
+      <div class="swatch s1"><div class="name">Course Green</div><div class="hex">#2A4A3A</div></div>
+      <div class="swatch s2"><div class="name">Heirloom Cream</div><div class="hex">#F3EBD7</div></div>
+      <div class="swatch s3"><div class="name">Tobacco Brown</div><div class="hex">#6B4E2E</div></div>
+      <div class="swatch s4"><div class="name">Member Navy</div><div class="hex">#1F2A44</div></div>
+      <div class="swatch s5"><div class="name">Burnt Orange</div><div class="hex">#B85C2A</div></div>
+    </div>
+
+    <h4 style="margin-top: 40px;">Composition Ratio</h4>
+    <div class="ratio-bar"><div></div><div></div><div></div></div>
+    <div class="ratio-labels">
+      <span>60% Primary</span><span>30% Secondary</span><span>10% Accent</span>
+    </div>
+
+    <h3>The Type</h3>
+    <p>Serif for soul. Sans for service. Italic for the jokes. The wordmark holds the heritage line; every other element pulls toward the boys.</p>
+
+    <div class="specimen">
+      <div class="label">Wordmark / Heritage — Cormorant Garamond Italic</div>
+      <div class="show" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 88px; color: var(--course-green); line-height: 1;">Birdie Chews</div>
+    </div>
+    <div class="specimen">
+      <div class="label">Display / Hero — DM Serif Display</div>
+      <div class="show" style="font-family: 'DM Serif Display', serif; font-size: 56px; color: var(--course-green-deep); line-height: 1.05;">Two for the turn.<br>One for the porch.</div>
+    </div>
+    <div class="specimen">
+      <div class="label">Voice — Cormorant Garamond Italic</div>
+      <div class="show" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 36px; color: var(--tobacco-brown); line-height: 1.3;">Respectfully, brotherrr — we're not playing thirty-six.</div>
+    </div>
+    <div class="specimen">
+      <div class="label">Body / Service — Inter</div>
+      <div class="show" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 18px; color: var(--course-green-deep); line-height: 1.6;">Nano-emulsified. 5 mg THC + 2.5 mg CBD per piece. Four pieces per tin. 10–20 minute onset, 2–4 hour duration.</div>
+    </div>
+
+    <h3>The Imagery</h3>
+    <p>Cart paths, halfway-house counters, leather recliners, back porches, Traegers smoking, Tahoes parked in the dirt lot. Real guys. Golden hour and overcast only. Include the mess — the cooler tucked behind the cart, the divot tool in the wrong pocket, dust on the FootJoys. The product is a quiet element of the scene. Never a hero shot.</p>
+    <p><em>Anti-references: pristine fairways with no human in frame, studio shots on teal gradients, edible-porn close-ups of the gummies, anything that could live on a stock photo site.</em></p>
+  </div>
+</section>
+
+<section id="house" class="dark">
+  <div class="page narrow">
+    <div class="eyebrow">Section Five</div>
+    <h2 class="section">House Rules</h2>
+    <p>Before any piece of content ships — written, designed, photographed, posted — it goes through the one-sentence test.</p>
+
+    <blockquote>Would this work on the leather recliner with the boys Saturday afternoon — <em>and</em> on the kitchen counter when his mother walks in Monday morning?</blockquote>
+
+    <p>Both yes: ship it. Either no: hold it. No exceptions, no overrides, no "this one time."</p>
+
+    <div class="dodont">
+      <div class="do">
+        <h4>Do</h4>
+        <ul>
+          <li>Real guys, cast from the persona</li>
+          <li>Golden hour, overcast, soft window light</li>
+          <li>Cart paths, halfway-house counters, back porches</li>
+          <li>One persona word per composition</li>
+          <li>"Two-deep," "paceable," "right amount"</li>
+          <li>Mock-formal Southern when joking</li>
+          <li>Tin on the console. Sleeve in the bag.</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Models. Influencers in branded fits.</li>
+          <li>Midday studio light. Ring lights.</li>
+          <li>Pristine fairways. White golf balls on tees.</li>
+          <li>Stacking three slang words in one line</li>
+          <li>"High," "stoned," "lit," "420," "blazed"</li>
+          <li>Sarcasm at the audience's expense</li>
+          <li>Floating product on a teal gradient</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product">
+  <div class="page narrow">
+    <div class="eyebrow">Section Six</div>
+    <h2 class="section">The Product</h2>
+    <p class="lead">Nano-emulsified. THC + CBD at two-to-one. Paceable by design.</p>
+
+    <p>Fast-onset (10–20 minutes) means it lands with the moment, not three holes later. Short duration (2–4 hours) means it clears before he drives home from dinner. The 2:1 ratio with CBD smooths the curve — no paranoia spike, no overshoot, no "I'm too high" moments. CBG is deliberately absent. CBG is the wellness signal Greenside and Bite both lean on; we don't.</p>
+
+    <h3>SKU Architecture</h3>
+    <p><strong>The Foursome Tin</strong> — four gummies, the cart-bag standard. One per player. The unit the brand was designed around.</p>
+    <p><strong>The Saturday Tin</strong> — eight gummies. The host's tin. Sits on the kitchen counter when the boys come over.</p>
+    <p><strong>The Singles Sleeve</strong> — individually wrapped, granola-bar discreet from the outside. For the golf bag, the boat cooler, the rehearsal-dinner blazer pocket.</p>
+
+    <div class="tin-stage">
+      <div class="tin">
+        <span class="lid-rim"></span>
+        <div class="mono">BC</div>
+        <div class="name">Birdie Chews</div>
+        <div class="sub">The Foursome Tin · 4 ct</div>
+      </div>
+    </div>
+    <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tobacco-brown); margin-top: 0;">Concept rendering · final packaging by designer engagement</p>
+  </div>
+</section>
+
+<div class="ornament">· · ·</div>
+
+<section id="pitch">
+  <div class="page narrow">
+    <div class="eyebrow">Section Seven</div>
+    <h2 class="section">The Pitch</h2>
+    <p>What you walk in with when you sit down across from a state-licensed cannabis operator. Ninety seconds, max.</p>
+
+    <div class="pitch">
+      <p>There are three brands going after golfers with THC, and they all sound the same — <em>focus, calm, wellness</em>. None of them are talking to the actual customer: the 25-to-35-year-old Southern guy who plays a lot of golf, hosts the boys, and has already substituted gummies for most of his weeknight bourbon.</p>
+      <p>We've built the brand for him. Name, voice, design, persona, ritual, product spec. The product is nano-emulsified THC + CBD at a paceable 2:1 ratio, designed to clear before he drives home. We want to partner with an operator who manufactures and distributes. We own the IP and the brand story. You get a defensible, differentiated SKU in a category your other brands aren't reaching.</p>
+      <p class="kicker">Halfway-house-coded weed gummy for guys who'd rather be at the turn than the tavern.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="mark">Birdie Chews</div>
+  <p>Brand Book · Volume One · 2026</p>
+  <p>Two for the turn. One for the porch.</p>
+  <p style="margin-top: 24px; opacity: 0.4;">For licensed-operator inquiries · birdiechews.com</p>
+</footer>
+
+</body>
+</html>
